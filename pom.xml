@@ -14,6 +14,23 @@
         <module>dubbo-consumer</module>
     </modules>
 
+    <dependencyManagement>
+        <!--
+        1. 若 dependencies 里的 dependency 自己没有声明 version 元素，
+           那么maven 就会 到 depenManagement 里去找有没有该 artifactId 和 groupId 进行过版本声明，
+           若存在，则继承它，若没有则报错，你必须为dependency声明一个version**
+
+        2. 若 dependencies 中的 dependency 声明了version，则 dependencyManagement 中的声明无效-->
+
+        <!--
+        1.所有声明在d ependencies 里的依赖都会自动引入，并默认被所有的子项目继承
+
+        2.dependencies 即使在子项目中不写该依赖项，那么子项目仍然会从父项目中继承该依赖项（全部继承）
+
+        3.dependencyManagement 只是声明依赖的版本号，该依赖不会引入，因此子项目需要显示声明所需要引入的依赖，若不声明则不引入
+        子项目声明了依赖且未声明版本号和scope，则会继承父项目的版本号和scope，否则覆盖
+        -->
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
