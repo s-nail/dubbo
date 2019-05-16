@@ -5,6 +5,9 @@ import com.hundsun.domain.City;
 import com.hundsun.domain.User;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * 城市 Dubbo 服务消费者
  */
@@ -28,7 +31,11 @@ public class CityDubboConsumerService {
     public User saveUser() {
         User user = new User();
         user.setUsername("Jackson");
-        user.setPassword("admin@"+(i++));
-        return userService.saveUser(user);
+        user.setPassword("admin@" + (i++));
+        int i = userService.saveUser(user);
+        System.out.println("Time:" + new Date() + "，插入条数：" + i);
+        List<User> list = userService.listUser();
+        System.out.println(list);
+        return user;
     }
 }

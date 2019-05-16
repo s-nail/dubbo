@@ -13,7 +13,6 @@ public class UserController {
 
     @RequestMapping("/save")
     public Object saveUser() {
-        service.printCity();
         return service.saveUser();
     }
 }
