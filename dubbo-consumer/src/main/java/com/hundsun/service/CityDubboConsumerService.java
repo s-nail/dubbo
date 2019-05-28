@@ -4,6 +4,8 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.hundsun.domain.City;
 import com.hundsun.domain.User;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import java.util.Date;
 import java.util.List;
@@ -27,15 +29,12 @@ public class CityDubboConsumerService {
         System.out.println(city.toString());
     }
 
-
     public User saveUser() {
         User user = new User();
+        user.setId(5);
         user.setUsername("Jackson");
         user.setPassword("admin@" + (i++));
-        int i = userService.saveUser(user);
-        System.out.println("Time:" + new Date() + "，插入条数：" + i);
-        List<User> list = userService.listUser();
-        System.out.println(list);
+        userService.saveUser(user);
         return user;
     }
 }
