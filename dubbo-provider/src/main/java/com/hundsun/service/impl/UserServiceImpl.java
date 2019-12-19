@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    //@Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public int saveUser(User user) {
         int i = 0;
         try {
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
             System.out.println("Time:" + new Date() + "，插入条数：" + i);
         }catch (Exception e){
             System.out.println("===================回滚？============================="+e);
-            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            //TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
         return i;
     }

@@ -4,11 +4,6 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.hundsun.domain.City;
 import com.hundsun.domain.User;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
-
-import java.util.Date;
-import java.util.List;
 
 /**
  * 城市 Dubbo 服务消费者

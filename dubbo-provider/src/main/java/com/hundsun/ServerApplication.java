@@ -3,6 +3,7 @@ package com.hundsun;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -10,10 +11,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication
 @MapperScan(basePackages = "com.hundsun.dao")
-
+@EnableTransactionManagement
+@EnableAspectJAutoProxy
 public class ServerApplication {
 
     public static void main(String[] args) {
+        //ClassNotFoundException: org.aspectj.lang.annotation.Pointcut
         // 程序启动入口
         // 启动嵌入式的 Tomcat 并初始化 Spring 环境及其各 Spring 组件
         SpringApplication.run(ServerApplication.class,args);
