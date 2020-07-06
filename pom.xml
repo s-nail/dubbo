@@ -13,64 +13,63 @@
         <module>dubbo-common</module>
         <module>dubbo-consumer</module>
     </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
-    <dependencyManagement>
-        <!--
+   <!-- <dependencyManagement>
+        &lt;!&ndash;
         1. 若 dependencies 里的 dependency 自己没有声明 version 元素，
            那么maven 就会 到 depenManagement 里去找有没有该 artifactId 和 groupId 进行过版本声明，
            若存在，则继承它，若没有则报错，你必须为dependency声明一个version**
 
-        2. 若 dependencies 中的 dependency 声明了version，则 dependencyManagement 中的声明无效-->
+        2. 若 dependencies 中的 dependency 声明了version，则 dependencyManagement 中的声明无效&ndash;&gt;
 
-        <!--
+        &lt;!&ndash;
         1.所有声明在d ependencies 里的依赖都会自动引入，并默认被所有的子项目继承
 
         2.dependencies 即使在子项目中不写该依赖项，那么子项目仍然会从父项目中继承该依赖项（全部继承）
 
         3.dependencyManagement 只是声明依赖的版本号，该依赖不会引入，因此子项目需要显示声明所需要引入的依赖，若不声明则不引入
         子项目声明了依赖且未声明版本号和scope，则会继承父项目的版本号和scope，否则覆盖
-        -->
-    </dependencyManagement>
+        &ndash;&gt;
+    </dependencyManagement>-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <!-- Spring Boot Dubbo 依赖 -->
-        <dependency>
-            <groupId>io.dubbo.springboot</groupId>
-            <artifactId>spring-boot-starter-dubbo</artifactId>
-            <version>1.0.0</version>
         </dependency>
 
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.16</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
-
-        <!-- mybatis 与 spring boot 2.x的整合包 -->
+        <!-- dubbo依赖 -->
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>2.0.0</version>
         </dependency>
 
-
-        <!-- mysql JDBC驱动 -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.39</version>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.5.7</version>
         </dependency>
 
+        <!-- 引入zookeeper的依赖 -->
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.1</version>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.12</version>
+            <artifactId>log4j-over-slf4j</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

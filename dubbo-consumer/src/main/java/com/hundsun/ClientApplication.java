@@ -1,5 +1,6 @@
 package com.hundsun;
 
+import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -11,7 +12,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  *
  * exclude = DataSourceAutoConfiguration.class：排除自动注入数据源的配置（取消数据库配置），一般使用在客户端（消费者）服务中
  */
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@EnableDubboConfiguration
+@SpringBootApplication
 public class ClientApplication {
 
     public static void main(String[] args) {
